@@ -1,0 +1,26 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - '4000:4000'
+    command: mix phx.server
+    tty: true
+    environment:
+      - MIX_ENV=dev
+      - PORT=4000
+    volumes:
+      - ./:/app
+    working_dir: /app
+
+  db:
+    image: postgres
+    volumes:
+      - db-pg:/var/lib/postgresql/data/pgdata
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+volumes:
+  db-pg:
