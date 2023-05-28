@@ -1,26 +1,34 @@
 <header class="px-4 sm:px-6 lg:px-8">
   <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
     <div class="flex items-center gap-4">
-      <a href="/">
-        <img src={~p"/images/logo.svg"} width="36" />
-      </a>
-      <p class="bg-brand/5 text-brand rounded-full px-2 font-medium leading-6">
-        v<%= Application.spec(:phoenix, :vsn) %>
+      <p>
+        <img src={~p"/images/calendar.svg"} width="36" />
+      </p>
+      <p class="text-brand pr-2 font-medium leading-6">
+        カレンダー
+      </p>
+      <p class="px-2 font-medium leading-6">
+        <.link patch={~p"/"}>
+          <button class="border-gray-200 border-2 rounded px-4 py-1">今日</button>
+        </.link>
+      </p>
+      <p class="pl-2 font-medium leading-6">
+        <.link patch={~p"/month/#{assigns.prev_month.year}/#{assigns.prev_month.month}"}>
+          ＜
+        </.link>
+      </p>
+      <p class="pr-2 font-medium leading-6">
+        <.link patch={~p"/month/#{assigns.next_month.year}/#{assigns.next_month.month}"}>
+        ＞
+        </.link>
+      </p>
+      <p class="px-2 font-medium leading-6 text-xl">
+        <%= assigns.this_month.year %>年 <%= assigns.this_month.month %>月
       </p>
     </div>
     <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
-      <a href="https://twitter.com/elixirphoenix" class="hover:text-zinc-700">
-        @elixirphoenix
-      </a>
-      <a href="https://github.com/phoenixframework/phoenix" class="hover:text-zinc-700">
-        GitHub
-      </a>
-      <a
-        href="https://hexdocs.pm/phoenix/overview.html"
-        class="rounded-lg bg-zinc-100 px-2 py-1 hover:bg-zinc-200/80"
-      >
-        Get Started <span aria-hidden="true">&rarr;</span>
-      </a>
+      <div class="w-9 h-9 rounded-full bg-orange-500 text-white leading-6">
+      </div>
     </div>
   </div>
 </header>

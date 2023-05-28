@@ -1,0 +1,22 @@
+#+TITLE: ロードマップ
+* タスク
+** DONE パラメータの取り扱い 0 1
+CLOSED: [2023-05-28 Sun 12:59]
+** DONE handle_params 0 1
+CLOSED: [2023-05-28 Sun 13:46]
+** TODO liveview勉強 0 1
+** DONE 今日css
+CLOSED: [2023-05-28 Sun 14:00]
+** DONE <
+CLOSED: [2023-05-28 Sun 14:03]
+** DONE >
+CLOSED: [2023-05-28 Sun 14:03]
+** DONE ヘッダー整理
+CLOSED: [2023-05-28 Sun 14:10]
+** カレンダーの日付どう持つか検討
+** 日毎のコンポーネント作る
+** イベント足せるようにする
+** 
+** 認証
+** locale
+- https://hexdocs.pm/phoenix_live_view/using-gettext.html

@@ -17,7 +17,8 @@ defmodule CalendarAppWeb.Router do
   scope "/", CalendarAppWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", CalendarLive
+    live "/month/:year/:month", CalendarLive
   end
 
   # Other scopes may use custom stacks.
