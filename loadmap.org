@@ -4,7 +4,8 @@
 CLOSED: [2023-05-28 Sun 12:59]
 ** DONE handle_params 0 1
 CLOSED: [2023-05-28 Sun 13:46]
-** TODO liveview勉強 0 1
+** DONE liveview勉強 0 4
+CLOSED: [2023-05-29 Mon 15:13]
 ** DONE 今日css 0 1
 CLOSED: [2023-05-28 Sun 14:00]
 ** DONE <
@@ -17,9 +18,34 @@ CLOSED: [2023-05-28 Sun 14:10]
 CLOSED: [2023-05-28 Sun 15:11]
 ** DONE 日毎のコンポーネント作る 0 3
 CLOSED: [2023-05-28 Sun 16:35]
-** TODO イベント足せるようにする
+** DONE イベント足せるようにする 0 11
+CLOSED: [2023-05-29 Mon 15:13]
 - イベントはfirst_date+34日分だけ持つ
 - "date":[events]のmapかなー
+*** DONE デフォルトのモーダルが動かない！→generatorを参考にして解決
+CLOSED: [2023-05-29 Mon 13:43]
+** TODO liveview勉強 0 3
+*** mount問題 layoutデータどうする問題→new/editでロードしたときに現在月に戻って変かなと思ってたけど、別にいい気がしてきた。さすがにパラメータ見てテキトーな月にするのはやりすぎな気がする。そもそもformでロードされるのは想定外
+*** DONE form_componenet
+CLOSED: [2023-05-29 Mon 15:49]
+*** DONE 記事読む
+CLOSED: [2023-05-29 Mon 20:35]
+*** DONE 理解する→だいたい理解したかな。。
+CLOSED: [2023-05-29 Mon 20:35]
+- core components
+- liveview
+- liveview.js
+*** DONE live_componentのエラー理解したい
+CLOSED: [2023-05-30 Tue 09:45]
+- →今試したらいけてた。。。よくわからん
+- live_component/componentどっちの方がいいのか理解したい→普通にstateいらないならただのcomponentでいい気がする
+*** TODO streamでeventはlistで持ってfilterした方がパフォーマンスいいのかな？
+** TODO phx-disable-with なんとかしたい
+** TODO 過去うすく
+** phoenix storybook
+- https://qiita.com/RyoWakabayashi/items/232bcc3c2364d2992470
+** テスト
+- https://hexdocs.pm/phoenix_live_view/Phoenix.LiveViewTest.html
 ** 
 ** 認証
 ** locale

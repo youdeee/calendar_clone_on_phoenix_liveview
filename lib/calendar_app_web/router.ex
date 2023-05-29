@@ -17,8 +17,10 @@ defmodule CalendarAppWeb.Router do
   scope "/", CalendarAppWeb do
     pipe_through :browser
 
-    live "/", CalendarLive
-    live "/month/:year/:month", CalendarLive
+    live "/", CalendarLive.Index, :index
+    live "/month/:year/:month", CalendarLive.Index, :index
+    live "/events/new/:date", CalendarLive.Index, :new
+    live "/events/:id/edit", CalendarLive.Index, :edit
   end
 
   # Other scopes may use custom stacks.

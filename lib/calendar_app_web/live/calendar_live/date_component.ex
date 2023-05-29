@@ -1,11 +1,10 @@
-defmodule CalendarApp.CalendarComponent do
-  use CalendarAppWeb, :html
+defmodule CalendarAppWeb.CalendarLive.DateComponent do
+  use CalendarAppWeb, :live_component
 
-  # type: Date
-  attr :date, :any, required: true
-  attr :events, :list, required: true
+  # attr :date, :any, required: true # type: Date
+  # attr :events, :list, required: true
 
-  def date(assigns) do
+  def render(assigns) do
     ~H"""
     <div
       phx-click={JS.patch(~p"/events/new/#{Date.to_string(@date)}")}
@@ -19,8 +18,7 @@ defmodule CalendarApp.CalendarComponent do
     """
   end
 
-  # type: Date
-  attr :date, :any, required: true
+  # attr :date, :any, required: true # type: Date
 
   defp title(assigns) do
     date = assigns.date
@@ -50,8 +48,7 @@ defmodule CalendarApp.CalendarComponent do
     """
   end
 
-  # type: Event
-  attr :event, :any, required: true
+  # attr :event, :any, required: true # type: Event
 
   defp event(assigns) do
     ~H"""
