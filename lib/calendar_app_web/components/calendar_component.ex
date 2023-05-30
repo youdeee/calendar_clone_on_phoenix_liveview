@@ -1,10 +1,17 @@
-defmodule CalendarApp.CalendarComponent do
+defmodule CalendarAppWeb.CalendarComponent do
   use CalendarAppWeb, :html
 
   # type: Date
   attr :date, :any, required: true
   attr :events, :list, required: true
 
+  @doc """
+  Renders a date area.
+
+  ## Examples
+
+      <.date date={Date.utc_today} events={[%CalendarApp.Calendar.Event{}]} />
+  """
   def date(assigns) do
     is_past =
       if Timex.compare(assigns.date, Timex.today("Japan")) == -1, do: "opacity-50", else: ""
@@ -13,7 +20,7 @@ defmodule CalendarApp.CalendarComponent do
 
     ~H"""
     <div
-      phx-click={JS.patch(~p"/events/new/#{Date.to_string(@date)}")}
+      phx-click={JS.patch("/events/new/#{Date.to_string(@date)}")}
       class="flex-1 border-gray-100 border-2 overflow-auto"
     >
       <.title date={@date} />

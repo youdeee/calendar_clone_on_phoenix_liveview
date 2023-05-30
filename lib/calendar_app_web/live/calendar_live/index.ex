@@ -89,7 +89,7 @@ defmodule CalendarAppWeb.CalendarLive.Index do
           <div class="flex h-1/5">
             <%= for col <- 0..6 do %>
               <% date = @first_date |> Timex.shift(days: col + row * 7) %>
-              <CalendarApp.CalendarComponent.date date={date} events={@events[date] || []} />
+              <CalendarAppWeb.CalendarComponent.date date={date} events={@events[date] || []} />
             <% end %>
           </div>
         <% end %>

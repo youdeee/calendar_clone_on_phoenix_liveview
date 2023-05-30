@@ -1,5 +1,6 @@
 defmodule CalendarAppWeb.Router do
   use CalendarAppWeb, :router
+  import PhoenixStorybook.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -14,6 +15,10 @@ defmodule CalendarAppWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/" do
+    storybook_assets()
+  end
+
   scope "/", CalendarAppWeb do
     pipe_through :browser
 
@@ -21,6 +26,7 @@ defmodule CalendarAppWeb.Router do
     live "/month/:year/:month", CalendarLive.Index, :index
     live "/events/new/:date", CalendarLive.Index, :new
     live "/events/:id/edit", CalendarLive.Index, :edit
+    live_storybook("/storybook", backend_module: CalendarAppWeb.Storybook)
   end
 
   # Other scopes may use custom stacks.
