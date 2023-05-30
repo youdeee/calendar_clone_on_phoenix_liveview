@@ -41,9 +41,11 @@ CLOSED: [2023-05-30 Tue 09:45]
 - →今試したらいけてた。。。よくわからん
 - live_component/componentどっちの方がいいのか理解したい→普通にstateいらないならただのcomponentでいい気がする
 *** streamでeventはlistで持ってfilterした方がパフォーマンスいいのかな？→やろうとしたけどそもそも今回は月変えるごとにクエリ呼ぶので最適化する意味がない
-** TODO phx-disable-with なんとかしたい 0 2
-** TODO 過去うすく
-** phoenix storybook
+** DONE phx-disable-with なんとかしたい 0 3
+CLOSED: [2023-05-30 Tue 13:02]
+** DONE 過去うすく
+CLOSED: [2023-05-30 Tue 13:15]
+** TODO phoenix storybook
 - https://qiita.com/RyoWakabayashi/items/232bcc3c2364d2992470
 ** テスト
 - https://hexdocs.pm/phoenix_live_view/Phoenix.LiveViewTest.html

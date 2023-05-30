@@ -6,15 +6,22 @@ defmodule CalendarApp.CalendarComponent do
   attr :events, :list, required: true
 
   def date(assigns) do
+    is_past =
+      if Timex.compare(assigns.date, Timex.today("Japan")) == -1, do: "opacity-50", else: ""
+
+    assigns = assign(assigns, :is_past, is_past)
+
     ~H"""
     <div
       phx-click={JS.patch(~p"/events/new/#{Date.to_string(@date)}")}
       class="flex-1 border-gray-100 border-2 overflow-auto"
     >
       <.title date={@date} />
-      <%= for event <- @events do %>
-        <.event event={event} />
-      <% end %>
+      <div class={@is_past}>
+        <%= for event <- @events do %>
+          <.event event={event} />
+        <% end %>
+      </div>
     </div>
     """
   end
