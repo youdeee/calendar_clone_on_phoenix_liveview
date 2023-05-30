@@ -24,7 +24,8 @@ CLOSED: [2023-05-29 Mon 15:13]
 - "date":[events]のmapかなー
 *** DONE デフォルトのモーダルが動かない！→generatorを参考にして解決
 CLOSED: [2023-05-29 Mon 13:43]
-** TODO liveview勉強 0 3
+** DONE liveview勉強 0 3
+CLOSED: [2023-05-30 Tue 10:11]
 *** mount問題 layoutデータどうする問題→new/editでロードしたときに現在月に戻って変かなと思ってたけど、別にいい気がしてきた。さすがにパラメータ見てテキトーな月にするのはやりすぎな気がする。そもそもformでロードされるのは想定外
 *** DONE form_componenet
 CLOSED: [2023-05-29 Mon 15:49]
@@ -39,8 +40,8 @@ CLOSED: [2023-05-29 Mon 20:35]
 CLOSED: [2023-05-30 Tue 09:45]
 - →今試したらいけてた。。。よくわからん
 - live_component/componentどっちの方がいいのか理解したい→普通にstateいらないならただのcomponentでいい気がする
-*** TODO streamでeventはlistで持ってfilterした方がパフォーマンスいいのかな？
-** TODO phx-disable-with なんとかしたい
+*** streamでeventはlistで持ってfilterした方がパフォーマンスいいのかな？→やろうとしたけどそもそも今回は月変えるごとにクエリ呼ぶので最適化する意味がない
+** TODO phx-disable-with なんとかしたい 0 2
 ** TODO 過去うすく
 ** phoenix storybook
 - https://qiita.com/RyoWakabayashi/items/232bcc3c2364d2992470

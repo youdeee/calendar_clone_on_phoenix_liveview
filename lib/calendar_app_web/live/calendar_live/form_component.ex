@@ -22,18 +22,20 @@ defmodule CalendarAppWeb.CalendarLive.FormComponent do
         <.input field={@form[:name]} type="text" />
         <:actions>
           <div :if={@action == :new}></div>
-          <div
+          <.button
             :if={@action == :edit}
             phx-click={
               JS.push("delete", value: %{id: @event.id})
               |> JS.patch(~p"/month/#{@this_month.year}/#{@this_month.month}")
             }
-            phx-disable-with="削除"
-            class="bg-red-500 rounded-lg cursor-pointer py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80"
+            class="bg-red-500"
+            type="button"
           >
             削除
-          </div>
-          <.button class="bg-blue-500" phx-disable-with="登録">登録</.button>
+          </.button>
+          <.button class="bg-blue-500">
+            登録
+          </.button>
         </:actions>
       </.simple_form>
     </div>

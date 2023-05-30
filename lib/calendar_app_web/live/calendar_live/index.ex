@@ -14,8 +14,9 @@ defmodule CalendarAppWeb.CalendarLive.Index do
   end
 
   def handle_event("delete", %{"id" => id}, socket) do
-    event = Calendar.get_event!(id)
-    {:ok, _} = Calendar.delete_event(event)
+    with event when not is_nil(event) <- Calendar.get_event(id) do
+      Calendar.delete_event(event)
+    end
 
     {:noreply, socket}
   end
