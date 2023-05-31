@@ -51,7 +51,8 @@ defmodule CalendarApp.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:timex, "~> 3.0"},
-      {:phoenix_storybook, "~> 0.5.0"}
+      {:phoenix_storybook, "~> 0.5.0"},
+      {:mock, "~> 0.3.0", only: :test}
     ]
   end
 

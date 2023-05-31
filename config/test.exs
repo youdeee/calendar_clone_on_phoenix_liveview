@@ -8,7 +8,7 @@ import Config
 config :calendar_app, CalendarApp.Repo,
   username: "postgres",
   password: "postgres",
-  hostname: "localhost",
+  hostname: "db",
   database: "calendar_app_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
@@ -16,7 +16,7 @@ config :calendar_app, CalendarApp.Repo,
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :calendar_app, CalendarAppWeb.Endpoint,
-  http: [ip: {127, 0, 0, 1}, port: 4002],
+  http: [ip: {0, 0, 0, 0}, port: 4002],
   secret_key_base: "4yZgm+8zuTVO7PzFxLP6vLGudGwnZqAgKRRktNfiOZeiJoiCfXGbjbT9KvfS4gUD",
   server: false
 

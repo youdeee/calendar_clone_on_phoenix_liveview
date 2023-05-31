@@ -1,6 +1,6 @@
 defmodule CalendarApp.CalendarTest do
   use CalendarApp.DataCase
-
+  import Mock
   alias CalendarApp.Calendar
 
   describe "events" do
@@ -9,6 +9,44 @@ defmodule CalendarApp.CalendarTest do
     import CalendarApp.CalendarFixtures
 
     @invalid_attrs %{name: nil, date: nil}
+
+    test "first_date_of_calendar/1 return first date of calendar (last date of month)" do
+      assert Calendar.first_date_of_calendar(~D[2023-05-31]) == ~D[2023-04-29]
+    end
+
+    test "first_date_of_calendar/1 return first date of calendar (first date of month)" do
+      assert Calendar.first_date_of_calendar(~D[2023-06-01]) == ~D[2023-05-27]
+    end
+
+    test "beginning_of_this_month/1 return beginning of month (with valid params)" do
+      assert Calendar.beginning_of_this_month(%{"year" => 2023, "month" => 5}) == ~D[2023-05-01]
+    end
+
+    test "beginning_of_this_month/1 return beginning of month (with any)" do
+      with_mock Calendar, [:passthrough], today: fn -> ~D[2023-05-27] end do
+        assert Calendar.beginning_of_this_month(nil) == ~D[2023-05-01]
+      end
+    end
+
+    test "beginning_of_this_month/0 return beginning of month" do
+      with_mock Calendar, [:passthrough], today: fn -> ~D[2023-05-27] end do
+        assert Calendar.beginning_of_this_month() == ~D[2023-05-01]
+      end
+    end
+
+    test "list_events_from_first_date/1 returns events at 1 month" do
+      first_date = Calendar.first_date_of_calendar(~D[2023-05-31])
+      _event1 = event_fixture(name: "not within range", date: ~D[2023-04-28])
+      event2 = event_fixture(name: "within range", date: ~D[2023-04-29])
+      event3 = event_fixture(name: "within range", date: ~D[2023-06-02])
+      event3_2 = event_fixture(name: "within range", date: ~D[2023-06-02])
+      _event4 = event_fixture(name: "not within range", date: ~D[2023-06-03])
+
+      assert Calendar.list_events_from_first_date(first_date) == %{
+               ~D[2023-04-29] => [event2],
+               ~D[2023-06-02] => [event3, event3_2]
+             }
+    end
 
     test "list_events/0 returns all events" do
       event = event_fixture()

@@ -8,6 +8,31 @@ defmodule CalendarApp.Calendar do
 
   alias CalendarApp.Calendar.Event
 
+  def today() do
+    Timex.today("Japan")
+  end
+
+  def first_date_of_calendar(date) do
+    date
+    |> Timex.beginning_of_month()
+    |> Timex.beginning_of_week(:sat)
+  end
+
+  def beginning_of_this_month(%{"year" => year, "month" => month}) do
+    with {year, _} <- Integer.parse("#{year}"),
+         {month, _} <- Integer.parse("#{month}") do
+      Timex.beginning_of_month(year, month)
+    else
+      _ -> beginning_of_this_month()
+    end
+  end
+
+  def beginning_of_this_month(_params), do: beginning_of_this_month()
+
+  def beginning_of_this_month() do
+    today() |> Timex.beginning_of_month()
+  end
+
   def list_events_from_first_date(first_date) do
     # 一回に35日分表示するので
     end_date = first_date |> Timex.shift(days: 35)

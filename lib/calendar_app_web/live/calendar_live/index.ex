@@ -5,7 +5,7 @@ defmodule CalendarAppWeb.CalendarLive.Index do
   alias CalendarApp.Calendar.Event
 
   def mount(_params, _session, socket) do
-    socket = assign(socket, index_params(now()))
+    socket = assign(socket, index_params(%{}))
     {:ok, socket}
   end
 
@@ -21,23 +21,9 @@ defmodule CalendarAppWeb.CalendarLive.Index do
     {:noreply, socket}
   end
 
-  defp apply_action(socket, :index, %{"year" => year, "month" => month}) do
-    this_month =
-      with {year, _} <- Integer.parse("#{year}"),
-           {month, _} <- Integer.parse("#{month}") do
-        Timex.beginning_of_month(year, month)
-      else
-        _ -> now()
-      end
-
+  defp apply_action(socket, :index, params) do
     socket
-    |> assign(index_params(this_month))
-    |> assign(:event, nil)
-  end
-
-  defp apply_action(socket, :index, _params) do
-    socket
-    |> assign(index_params(now()))
+    |> assign(index_params(params))
   end
 
   defp apply_action(socket, :new, %{"date" => date}) do
@@ -56,21 +42,20 @@ defmodule CalendarAppWeb.CalendarLive.Index do
     socket
   end
 
-  defp index_params(this_month) do
-    first_date = this_month |> Timex.beginning_of_week(:sat)
+  defp index_params(params) do
+    beginning_of_this_month = Calendar.beginning_of_this_month(params)
+    first_date = Calendar.first_date_of_calendar(beginning_of_this_month)
 
     %{
       events: Calendar.list_events_from_first_date(first_date),
-      page_title: "#{this_month.year}年#{this_month.month}月",
+      page_title: "#{beginning_of_this_month.year}年#{beginning_of_this_month.month}月",
       first_date: first_date,
-      this_month: this_month,
-      prev_month: this_month |> Timex.shift(months: -1),
-      next_month: this_month |> Timex.shift(months: 1),
+      this_month: beginning_of_this_month,
+      prev_month: beginning_of_this_month |> Timex.shift(months: -1),
+      next_month: beginning_of_this_month |> Timex.shift(months: 1),
       event: nil
     }
   end
-
-  defp now, do: Timex.today("Japan") |> Timex.beginning_of_month()
 
   defp weekdays, do: ["土", "日", "月", "火", "水", "木", "金"]
 
