@@ -24,16 +24,13 @@ defmodule CalendarAppWeb.CalendarLive.FormComponent do
           <div :if={@action == :new}></div>
           <.button
             :if={@action == :edit}
-            phx-click={
-              JS.push("delete", value: %{id: @event.id})
-              |> JS.patch(~p"/month/#{@this_month.year}/#{@this_month.month}")
-            }
-            class="bg-red-500"
+            phx-click={JS.push("delete", value: %{id: @event.id})}
+            background="bg-red-500 hover:bg-red-300"
             type="button"
           >
             削除
           </.button>
-          <.button class="bg-blue-500">
+          <.button background="bg-blue-500 hover:bg-blue-300">
             登録
           </.button>
         </:actions>

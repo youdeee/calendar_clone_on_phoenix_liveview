@@ -48,7 +48,8 @@ CLOSED: [2023-05-30 Tue 13:15]
 ** DONE phoenix storybook 0 5
 CLOSED: [2023-05-30 Tue 17:47]
 - https://qiita.com/RyoWakabayashi/items/232bcc3c2364d2992470
-** TODO テスト 0 9
+** DONE テスト 0 17
+CLOSED: [2023-06-03 Sat 17:55]
 - https://hexdocs.pm/phoenix_live_view/Phoenix.LiveViewTest.html
 - scafoldのテストどんな感じか
 - componentいい感じにしたい。あわよくばstorybookに還元したい
@@ -56,8 +57,10 @@ CLOSED: [2023-05-30 Tue 17:47]
 CLOSED: [2023-05-31 Wed 14:47]
 *** DONE iex壊れてる問題。storybook入れたからか？→上直したら多分直ってた
 CLOSED: [2023-05-31 Wed 14:48]
-*** test書く
-*** dialyzer
+*** DONE test書く
+CLOSED: [2023-06-03 Sat 17:55]
+** TODO phx-clickとjs.pushの実装調べる。なぜこの組み合わせならテスト通るのか
+** dialyzer
 ** TODO デプロイ試す
 ** TODO live_componentとかliveviewの中身調べる。genserver?
 ** 認証

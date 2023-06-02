@@ -2,6 +2,7 @@ defmodule CalendarApp.CalendarTest do
   use CalendarApp.DataCase
   import Mock
   alias CalendarApp.Calendar
+  alias CalendarApp.Shared
 
   describe "events" do
     alias CalendarApp.Calendar.Event
@@ -23,13 +24,13 @@ defmodule CalendarApp.CalendarTest do
     end
 
     test "beginning_of_this_month/1 return beginning of month (with any)" do
-      with_mock Calendar, [:passthrough], today: fn -> ~D[2023-05-27] end do
+      with_mock Shared, today: fn -> ~D[2023-05-27] end do
         assert Calendar.beginning_of_this_month(nil) == ~D[2023-05-01]
       end
     end
 
     test "beginning_of_this_month/0 return beginning of month" do
-      with_mock Calendar, [:passthrough], today: fn -> ~D[2023-05-27] end do
+      with_mock Shared, today: fn -> ~D[2023-05-27] end do
         assert Calendar.beginning_of_this_month() == ~D[2023-05-01]
       end
     end

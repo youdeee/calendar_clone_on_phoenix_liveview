@@ -18,7 +18,16 @@ defmodule CalendarAppWeb.CalendarLive.Index do
       Calendar.delete_event(event)
     end
 
-    {:noreply, socket}
+    this_month = socket.assigns.this_month
+    {:noreply, socket |> push_patch(to: ~p"/month/#{this_month.year}/#{this_month.month}")}
+  end
+
+  def handle_event("new", %{"date" => date}, socket) do
+    {:noreply, socket |> push_patch(to: ~p"/events/new/#{date}")}
+  end
+
+  def handle_event("edit", %{"id" => id}, socket) do
+    {:noreply, socket |> push_patch(to: ~p"/events/#{id}/edit")}
   end
 
   defp apply_action(socket, :index, params) do
@@ -93,7 +102,6 @@ defmodule CalendarAppWeb.CalendarLive.Index do
         action={@live_action}
         event={@event}
         patch={~p"/month/#{@this_month.year}/#{@this_month.month}"}
-        this_month={@this_month}
       />
     </.modal>
     """

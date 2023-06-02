@@ -205,6 +205,7 @@ defmodule CalendarAppWeb.CoreComponents do
   attr :type, :string, default: nil
   attr :class, :string, default: nil
   attr :rest, :global, include: ~w(disabled form name value)
+  attr :background, :string, default: "bg-zinc-900 hover:bg-zinc-700-3"
 
   slot :inner_block, required: true
 
@@ -215,7 +216,8 @@ defmodule CalendarAppWeb.CoreComponents do
       class={[
         "phx-submit-loading:opacity-75 rounded-lg py-2 px-6",
         "text-sm font-semibold leading-6 text-white active:text-white/80",
-        @class
+        @class,
+        @background
       ]}
       {@rest}
     >

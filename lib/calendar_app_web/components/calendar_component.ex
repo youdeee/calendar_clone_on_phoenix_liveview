@@ -20,8 +20,9 @@ defmodule CalendarAppWeb.CalendarComponent do
 
     ~H"""
     <div
-      phx-click={JS.patch("/events/new/#{Date.to_string(@date)}")}
+      phx-click={JS.push("new", value: %{date: @date})}
       class="flex-1 border-gray-100 border-2 overflow-auto"
+      id={"date-#{@date}"}
     >
       <.title date={@date} />
       <div class={@is_past}>
@@ -70,9 +71,10 @@ defmodule CalendarAppWeb.CalendarComponent do
   defp event(assigns) do
     ~H"""
     <div
-      phx-click={JS.patch(~p"/events/#{@event.id}/edit")}
+      phx-click={JS.push("edit", value: %{id: @event.id})}
       class="bg-brand text-white px-1 rounded-md my-0.5"
       style="min-height:24px;"
+      id={"event-#{@event.id}"}
     >
       <%= @event.name %>
     </div>

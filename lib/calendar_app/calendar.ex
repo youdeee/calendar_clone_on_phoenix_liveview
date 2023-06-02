@@ -6,11 +6,8 @@ defmodule CalendarApp.Calendar do
   import Ecto.Query, warn: false
   alias CalendarApp.Repo
 
+  alias CalendarApp.Shared
   alias CalendarApp.Calendar.Event
-
-  def today() do
-    Timex.today("Japan")
-  end
 
   def first_date_of_calendar(date) do
     date
@@ -30,7 +27,7 @@ defmodule CalendarApp.Calendar do
   def beginning_of_this_month(_params), do: beginning_of_this_month()
 
   def beginning_of_this_month() do
-    today() |> Timex.beginning_of_month()
+    Shared.today() |> Timex.beginning_of_month()
   end
 
   def list_events_from_first_date(first_date) do

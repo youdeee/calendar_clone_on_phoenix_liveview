@@ -12,7 +12,7 @@ defmodule CalendarApp.CalendarFixtures do
       attrs
       |> Enum.into(%{
         name: "some name",
-        date: ~D[2023-05-27]
+        date: ~D[2023-04-27]
       })
       |> CalendarApp.Calendar.create_event()
 
