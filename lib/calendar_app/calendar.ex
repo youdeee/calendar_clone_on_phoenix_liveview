@@ -9,12 +9,16 @@ defmodule CalendarApp.Calendar do
   alias CalendarApp.Shared
   alias CalendarApp.Calendar.Event
 
+  @type event_list() :: %{Date.t() => [%Event{}]}
+
+  @spec first_date_of_calendar(Date.t()) :: Date.t()
   def first_date_of_calendar(date) do
     date
     |> Timex.beginning_of_month()
     |> Timex.beginning_of_week(:sat)
   end
 
+  @spec beginning_of_this_month(%{String.t() => integer() | String.t()}) :: Date.t()
   def beginning_of_this_month(%{"year" => year, "month" => month}) do
     with {year, _} <- Integer.parse("#{year}"),
          {month, _} <- Integer.parse("#{month}") do
@@ -24,12 +28,15 @@ defmodule CalendarApp.Calendar do
     end
   end
 
+  @spec beginning_of_this_month(term()) :: Date.t()
   def beginning_of_this_month(_params), do: beginning_of_this_month()
 
+  @spec beginning_of_this_month() :: Date.t()
   def beginning_of_this_month() do
     Shared.today() |> Timex.beginning_of_month()
   end
 
+  @spec list_events_from_first_date(Date.t()) :: event_list()
   def list_events_from_first_date(first_date) do
     # 一回に35日分表示するので
     end_date = first_date |> Timex.shift(days: 35)

@@ -59,10 +59,12 @@ CLOSED: [2023-05-31 Wed 14:47]
 CLOSED: [2023-05-31 Wed 14:48]
 *** DONE test書く
 CLOSED: [2023-06-03 Sat 17:55]
-** TODO phx-clickとjs.pushの実装調べる。なぜこの組み合わせならテスト通るのか
-** dialyzer
-** TODO デプロイ試す
-** TODO live_componentとかliveviewの中身調べる。genserver?
-** 認証
-** locale
+** phx-clickとjs.pushの実装調べる。なぜこの組み合わせならテスト通るのか→よくわからん
+** live_componentとかliveviewの中身調べる。genserver?
+** デプロイ試す
+** DONE dialyzer 0 5
+CLOSED: [2023-06-05 Mon 13:30]
+- beginning_of_this_monthの返り値変えても反応してくれない。。。→dialyzerは1つでも成功すると通ってしまう仕様
+** TODO 認証
+** TODO locale
 - https://hexdocs.pm/phoenix_live_view/using-gettext.html

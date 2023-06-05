@@ -52,7 +52,8 @@ defmodule CalendarApp.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:timex, "~> 3.0"},
       {:phoenix_storybook, "~> 0.5.0"},
-      {:mock, "~> 0.3.0", only: :test}
+      {:mock, "~> 0.3.0", only: :test},
+      {:dialyxir, "~> 1.3", only: [:dev], runtime: false}
     ]
   end
 

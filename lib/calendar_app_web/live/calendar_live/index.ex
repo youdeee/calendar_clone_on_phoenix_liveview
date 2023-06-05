@@ -51,6 +51,15 @@ defmodule CalendarAppWeb.CalendarLive.Index do
     socket
   end
 
+  @spec index_params(map()) :: %{
+          events: Calendar.event_list(),
+          page_title: String.t(),
+          first_date: Date.t(),
+          this_month: Date.t(),
+          prev_month: Date.t(),
+          next_month: Date.t(),
+          event: nil
+        }
   defp index_params(params) do
     beginning_of_this_month = Calendar.beginning_of_this_month(params)
     first_date = Calendar.first_date_of_calendar(beginning_of_this_month)
