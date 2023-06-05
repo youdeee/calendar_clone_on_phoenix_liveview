@@ -61,10 +61,18 @@ CLOSED: [2023-05-31 Wed 14:48]
 CLOSED: [2023-06-03 Sat 17:55]
 ** phx-clickとjs.pushの実装調べる。なぜこの組み合わせならテスト通るのか→よくわからん
 ** live_componentとかliveviewの中身調べる。genserver?
-** デプロイ試す
 ** DONE dialyzer 0 5
 CLOSED: [2023-06-05 Mon 13:30]
 - beginning_of_this_monthの返り値変えても反応してくれない。。。→dialyzerは1つでも成功すると通ってしまう仕様
-** TODO 認証
-** TODO locale
+** DONE storybook playground試す
+CLOSED: [2023-06-05 Mon 19:42]
+** TODO liveviewからapiサーバーに移行する
+*** componentを簡単にreactに移植できないか
+*** liveviewを簡単にcontrollerに移植できないか
+** 認証 0 3
+- auth_plugはシンプルでよさそう
+*** layoutどうする users/系でもいい感じになるように考える appをどこで適用するべきか
+*** eventに適用する
+** デプロイ試す
+** locale
 - https://hexdocs.pm/phoenix_live_view/using-gettext.html

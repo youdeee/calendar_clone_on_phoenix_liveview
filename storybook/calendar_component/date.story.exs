@@ -2,8 +2,6 @@ defmodule Storybook.CalendarComponent.Date do
   use PhoenixStorybook.Story, :component
   alias CalendarApp.Calendar.Event
 
-  def container, do: {:div, class: "flex h-full", style: "height:160px;width:120px;"}
-
   def function, do: &Elixir.CalendarAppWeb.CalendarComponent.date/1
 
   # NOTE: Timexがるとテストのときにコンパイルが通らないのであえて標準のDateを使っている
@@ -44,5 +42,13 @@ defmodule Storybook.CalendarComponent.Date do
         }
       }
     ]
+  end
+
+  def template do
+    """
+    <div class="flex h-full" style="height:160px;width:120px;">
+      <.lsb-variation/>
+    </div>
+    """
   end
 end
