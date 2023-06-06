@@ -66,7 +66,11 @@ CLOSED: [2023-06-05 Mon 13:30]
 - beginning_of_this_monthの返り値変えても反応してくれない。。。→dialyzerは1つでも成功すると通ってしまう仕様
 ** DONE storybook playground試す
 CLOSED: [2023-06-05 Mon 19:42]
-** TODO liveviewからapiサーバーに移行する
+** DONE もっとcomponent化する 0 2
+CLOSED: [2023-06-06 Tue 18:54]
+** locale
+- https://hexdocs.pm/phoenix_live_view/using-gettext.html
+** liveviewからapiサーバーに移行する
 *** componentを簡単にreactに移植できないか
 *** liveviewを簡単にcontrollerに移植できないか
 ** 認証 0 3
@@ -74,5 +78,3 @@ CLOSED: [2023-06-05 Mon 19:42]
 *** layoutどうする users/系でもいい感じになるように考える appをどこで適用するべきか
 *** eventに適用する
 ** デプロイ試す
-** locale
-- https://hexdocs.pm/phoenix_live_view/using-gettext.html

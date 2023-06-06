@@ -6,7 +6,7 @@ defmodule CalendarAppWeb.CalendarLive.Index do
 
   def mount(_params, _session, socket) do
     socket = assign(socket, index_params(%{}))
-    {:ok, socket}
+    {:ok, socket, layout: false}
   end
 
   def handle_params(params, _url, socket) do
@@ -79,40 +79,47 @@ defmodule CalendarAppWeb.CalendarLive.Index do
 
   def render(assigns) do
     ~H"""
-    <div class="h-full">
-      <div class="flex">
-        <%= for col <- weekdays() do %>
-          <div class="flex-1 border-gray-100 border-2 text-center">
-            <%= col %>
-          </div>
-        <% end %>
+    <CalendarAppWeb.LayoutComponent.calendar_header
+      this_month={@this_month}
+      prev_month={@prev_month}
+      next_month={@next_month}
+    />
+    <main class="px-4 py-4" style="height: calc(100vh - 72px)">
+      <div class="h-full">
+        <div class="flex">
+          <%= for col <- weekdays() do %>
+            <div class="flex-1 border-gray-100 border-2 text-center">
+              <%= col %>
+            </div>
+          <% end %>
+        </div>
+        <div style="height: calc(100% - 32px)">
+          <%= for row <- 0..4 do %>
+            <div class="flex h-1/5">
+              <%= for col <- 0..6 do %>
+                <% date = @first_date |> Timex.shift(days: col + row * 7) %>
+                <CalendarAppWeb.CalendarComponent.date date={date} events={@events[date] || []} />
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
-      <div style="height: calc(100% - 32px)">
-        <%= for row <- 0..4 do %>
-          <div class="flex h-1/5">
-            <%= for col <- 0..6 do %>
-              <% date = @first_date |> Timex.shift(days: col + row * 7) %>
-              <CalendarAppWeb.CalendarComponent.date date={date} events={@events[date] || []} />
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <.modal
-      :if={@live_action in [:new, :edit]}
-      id="event_modal"
-      show
-      on_cancel={JS.patch(~p"/month/#{@this_month.year}/#{@this_month.month}")}
-    >
-      <.live_component
-        module={CalendarAppWeb.CalendarLive.FormComponent}
-        id={@event.id || :new}
-        title={@page_title}
-        action={@live_action}
-        event={@event}
-        patch={~p"/month/#{@this_month.year}/#{@this_month.month}"}
-      />
-    </.modal>
+      <.modal
+        :if={@live_action in [:new, :edit]}
+        id="event_modal"
+        show
+        on_cancel={JS.patch(~p"/month/#{@this_month.year}/#{@this_month.month}")}
+      >
+        <.live_component
+          module={CalendarAppWeb.CalendarLive.FormComponent}
+          id={@event.id || :new}
+          title={@page_title}
+          action={@live_action}
+          event={@event}
+          patch={~p"/month/#{@this_month.year}/#{@this_month.month}"}
+        />
+      </.modal>
+    </main>
     """
   end
 end

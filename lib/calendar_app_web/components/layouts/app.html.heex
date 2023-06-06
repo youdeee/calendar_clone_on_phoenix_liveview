@@ -1,37 +1,5 @@
-<header class="px-4 sm:px-6 lg:px-8">
-  <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
-    <div class="flex items-center gap-4">
-      <p>
-        <img src={~p"/images/calendar.svg"} width="36" />
-      </p>
-      <p class="text-brand pr-2 font-medium leading-6">
-        カレンダー
-      </p>
-      <p class="px-2 font-medium leading-6">
-        <.link patch={~p"/"}>
-          <button class="border-gray-200 border-2 rounded px-4 py-1">今日</button>
-        </.link>
-      </p>
-      <p class="pl-2 font-medium leading-6">
-        <.link patch={~p"/month/#{assigns.prev_month.year}/#{assigns.prev_month.month}"}>
-          ＜
-        </.link>
-      </p>
-      <p class="pr-2 font-medium leading-6">
-        <.link patch={~p"/month/#{assigns.next_month.year}/#{assigns.next_month.month}"}>
-          ＞
-        </.link>
-      </p>
-      <p class="px-2 font-medium leading-6 text-xl">
-        <%= assigns.this_month.year %>年 <%= assigns.this_month.month %>月
-      </p>
-    </div>
-    <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
-      <div class="w-9 h-9 rounded-full bg-brand text-white leading-6"></div>
-    </div>
-  </div>
-</header>
-<main class="px-4 py-4" style="height: calc(100vh - 72px)">
+<CalendarAppWeb.LayoutComponent.header />
+<main class="px-4 py-4">
   <.flash_group flash={@flash} />
   <%= @inner_content %>
 </main>
