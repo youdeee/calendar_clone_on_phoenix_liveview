@@ -56,8 +56,6 @@ defmodule CalendarAppWeb.CalendarLive.Index do
           page_title: String.t(),
           first_date: Date.t(),
           this_month: Date.t(),
-          prev_month: Date.t(),
-          next_month: Date.t(),
           event: nil
         }
   defp index_params(params) do
@@ -69,8 +67,6 @@ defmodule CalendarAppWeb.CalendarLive.Index do
       page_title: "#{beginning_of_this_month.year}年#{beginning_of_this_month.month}月",
       first_date: first_date,
       this_month: beginning_of_this_month,
-      prev_month: beginning_of_this_month |> Timex.shift(months: -1),
-      next_month: beginning_of_this_month |> Timex.shift(months: 1),
       event: nil
     }
   end
@@ -79,11 +75,7 @@ defmodule CalendarAppWeb.CalendarLive.Index do
 
   def render(assigns) do
     ~H"""
-    <CalendarAppWeb.LayoutComponent.calendar_header
-      this_month={@this_month}
-      prev_month={@prev_month}
-      next_month={@next_month}
-    />
+    <CalendarAppWeb.LayoutComponent.calendar_header this_month={@this_month} />
     <main class="px-4 py-4" style="height: calc(100vh - 72px)">
       <div class="h-full">
         <div class="flex">

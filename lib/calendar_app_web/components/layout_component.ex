@@ -26,10 +26,11 @@ defmodule CalendarAppWeb.LayoutComponent do
 
   # type: Date
   attr :this_month, :any, required: true
-  attr :prev_month, :any, required: true
-  attr :next_month, :any, required: true
 
   def calendar_header(assigns) do
+    assigns = assign(assigns, :prev_month, assigns.this_month |> Timex.shift(months: -1))
+    assigns = assign(assigns, :next_month, assigns.this_month |> Timex.shift(months: 1))
+
     ~H"""
     <CalendarAppWeb.LayoutComponent.header>
       <p class="px-2 font-medium leading-6">
